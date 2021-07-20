@@ -6,8 +6,11 @@ const server = restify.createServer({
   version: "1.0.0",
 });
 
+//before route choose 
+server.pre(restify.plugins.pre.userAgentConnection());
+//after router choose ,before handler
 server.use(restify.plugins.acceptParser(server.acceptable));
-server.use(restify.plugins.queryParser());
+server.use(restify.plugins.queryParser({mapParams: false}));
 server.use(restify.plugins.bodyParser());
 
 route(server);
