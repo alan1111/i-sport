@@ -12,6 +12,19 @@ server.pre(restify.plugins.pre.userAgentConnection());
 server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser({mapParams: false}));
 server.use(restify.plugins.bodyParser());
+// server.use(restify.CORS())
+server.use(restify.CORS({
+
+  // Defaults to ['*'].
+  origins: ['https://foo.com', 'http://bar.com', 'http://baz.com:8081'], 
+
+  // Defaults to false.
+  credentials: true,
+
+  // Sets expose-headers.
+  headers: ['x-foo']   
+
+}));
 
 route(server);
 
