@@ -1,7 +1,7 @@
 const { addUser } = require("./addUser");
-const { getUser } = require("./getUser");
+const { checkUser } = require("./checkUser");
 
 module.exports = {
   addUser,
-  getUser,
+  checkUser,
 };

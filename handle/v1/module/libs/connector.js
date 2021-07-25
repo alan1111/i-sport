@@ -16,7 +16,7 @@ const dbConnect = function () {
     if (db) {
       resolve(db);
     } else {
-      mongodb.MongoClient.connect(mongodUrl, function (err, client) {
+      mongodb.MongoClient.connect(mongodUrl, { useUnifiedTopology: true },function (err, client) {
         if (err) {
           reject(err);
         }
