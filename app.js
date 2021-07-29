@@ -10,6 +10,7 @@ const allowCrossDomain = function (req, res, next) {
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.header("Access-Control-Allow-Headers", "X-Requested-With, x-custom, Content-Type");
   res.header("Access-Control-Allow-Credentials", "true"); //和客户端对应，必须设置以后，才能接收cookie.
+  res.header('Content-Type', 'application/json;charset=utf-8');
   next();
 };
 
