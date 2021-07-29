@@ -10,42 +10,39 @@ let db;
       db = database;
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err);
     });
 })();
 
-function create(desc) {
+function create(content) {
   return new Promise((resolve, reject) => {
     let lists = db.collection("userList");
     let listId = mongodb.ObjectId();
     let whenCreated = Date.now();
     let item = {
       _id: listId,
-      desc,
+      content,
       createTime: whenCreated,
       updateTime: null,
     };
     lists.insertOne(item, (err, result) => {
       if (err) {
-        reject(err);
+        resolve({ reason: err, code: 1 });
       } else {
-        resolve({ data: { createdId: result.insertedId }, statusCode: 201 });
+        resolve({ result, code: 0 });
       }
     });
   });
 }
 
-function fetchAll() {
+function fetchAll(content) {
   return new Promise((resolve, reject) => {
     let lists = db.collection("userList");
-    lists.find({}).toArray((err, documents) => {
+    lists.find(content).toArray((err, result) => {
       if (err) {
-        reject(err);
+        resolve({ reason: err, code: 1 });
       } else {
-        resolve({
-          data: documents,
-          statusCode: documents.length > 0 ? 200 : 404,
-        });
+        resolve({ result, code: 0 });
       }
     });
   });
@@ -54,4 +51,4 @@ function fetchAll() {
 module.exports = {
   create,
   fetchAll,
-}
+};
