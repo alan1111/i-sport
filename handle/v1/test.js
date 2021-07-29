@@ -1,6 +1,5 @@
-const test = (req, res, next) => {
+const test = (req, res) => {
   res.send(req.params);
-  return next();
 };
 
 module.exports = {
