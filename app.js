@@ -9,7 +9,7 @@ const allowCrossDomain = function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://dev.iyunbao.com:8081"); //自定义中间件，设置跨域需要的响应头。
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.header("Access-Control-Allow-Headers", "X-Requested-With, x-custom, Content-Type");
-  res.header("Access-Control-Allow-Credentials", "true"); //和客户端对应，必须设置以后，才能接收cookie.
+  // res.header("Access-Control-Allow-Credentials", "true"); //和客户端对应，必须设置以后，才能接收cookie.
   res.header('Content-Type', 'application/json;charset=utf-8');
   next();
 };
@@ -19,6 +19,7 @@ app.use(cookieParser()); //运用cookie解析的中间件
 app.use(bodyParser.text());
 route(app);
 
-app.listen(3000, () => {
-  console.log("正在监听3000端口");
+const portVal = process.env.NODE_PORT || 3000;
+app.listen(portVal, () => {
+  console.log(`正在监听${portVal}端口`);
 });
