@@ -1,7 +1,9 @@
-const { addUser } = require("./addUser");
-const { checkUser } = require("./checkUser");
+// import  addUser from './addUser'
+// import  checkUser from './checkUser'
+import  meican from './meican'
 
-module.exports = {
-  addUser,
-  checkUser,
+export {
+  // addUser,
+  // checkUser,
+  meican
 };

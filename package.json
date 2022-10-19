@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "rollup app.js --format cjs --file bundle.js",
-    "start": "node ./app.js"
+    "start": "nodemon --exec babel-node --presets env app.js"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,10 @@
     "cookie-parser": "^1.4.5",
     "cors": "^2.0.0",
     "express": "^4.0.0",
-    "mongodb": "^3.3.4"
+    "mongodb": "^3.3.4",
+    "qs": "^6.11.0"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0"
   }
 }
